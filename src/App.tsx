@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import PowerPredictions from "./pages/PowerPredictions";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import { UnitPreferencesProvider } from "./contexts/UnitPreferencesContext";
 
 const queryClient = new QueryClient();
 
@@ -15,13 +17,16 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/power-predictions" element={<PowerPredictions />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <UnitPreferencesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/power-predictions" element={<PowerPredictions />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </UnitPreferencesProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

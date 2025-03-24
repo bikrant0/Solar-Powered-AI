@@ -1,17 +1,20 @@
 
 import React, { useState } from 'react';
 import { Search, Bell, Settings, Sun } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SearchBar: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Set the title based on current route
   const getTitle = () => {
     switch (location.pathname) {
       case '/power-predictions':
         return 'Power Predictions';
+      case '/settings':
+        return 'Settings';
       default:
         return 'Solar Energy Forecast';
     }
@@ -40,7 +43,10 @@ const SearchBar: React.FC = () => {
           <Bell className="h-5 w-5" />
         </button>
         
-        <button className="p-1.5 rounded-full hover:bg-white/10 transition-colors">
+        <button 
+          className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
+          onClick={() => navigate('/settings')}
+        >
           <Settings className="h-5 w-5" />
         </button>
       </div>
