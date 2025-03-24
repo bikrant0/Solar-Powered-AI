@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +97,20 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground p-0 m-0 overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .solar-table th {
+    @apply bg-solar-table-header text-black px-4 py-2 font-medium;
+  }
+  
+  .solar-table tr:nth-child(even) {
+    @apply bg-solar-table-row;
+  }
+  
+  .solar-table td {
+    @apply px-4 py-2 text-center;
   }
 }
