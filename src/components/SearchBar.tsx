@@ -1,15 +1,27 @@
 
 import React, { useState } from 'react';
 import { Search, Bell, Settings, Sun } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const SearchBar: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
+  const location = useLocation();
+
+  // Set the title based on current route
+  const getTitle = () => {
+    switch (location.pathname) {
+      case '/power-predictions':
+        return 'Power Predictions';
+      default:
+        return 'Solar Energy Forecast';
+    }
+  };
 
   return (
     <div className="flex items-center justify-between px-4 py-2 w-full bg-solar-blue text-white animate-fade-in">
       <div className="text-lg font-semibold flex items-center">
         <Sun className="mr-2 h-5 w-5" />
-        <span>Solar Energy Forecast</span>
+        <span>{getTitle()}</span>
       </div>
       
       <div className="flex items-center space-x-3">
