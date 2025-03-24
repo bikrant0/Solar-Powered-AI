@@ -8,6 +8,11 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import PowerPredictions from "./pages/PowerPredictions";
 import Settings from "./pages/Settings";
+import Weather from "./pages/Weather";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ResetPassword from "./pages/ResetPassword";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import { UnitPreferencesProvider } from "./contexts/UnitPreferencesContext";
 
@@ -25,6 +30,11 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/power-predictions" element={<PowerPredictions />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/weather" element={<Weather />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

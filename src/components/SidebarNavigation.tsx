@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Home, Cloud, Sun, Wifi, Settings } from 'lucide-react';
+import { Home, Cloud, Sun, Wifi, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -39,7 +39,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeTab, setAct
     { id: 'weather', icon: Cloud, path: '/weather' },
     { id: 'solar', icon: Sun, path: '/' },
     { id: 'connectivity', icon: Wifi, path: '/power-predictions' },
-    { id: 'settings', icon: Settings, path: '/settings' },
+    { id: 'profile', icon: User, path: '/profile' },
   ];
 
   const handleTabClick = (tabId: string, path: string) => {

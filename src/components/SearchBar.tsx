@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Search, Bell, Settings, Sun } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
+import NotificationsPanel from './NotificationsPanel';
 
 const SearchBar: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -17,6 +19,8 @@ const SearchBar: React.FC = () => {
         return 'Power Predictions';
       case '/settings':
         return 'Settings';
+      case '/weather':
+        return 'Weather History';
       case '/':
         return 'Solar Energy Forecast';
       default:
@@ -43,9 +47,7 @@ const SearchBar: React.FC = () => {
           <Search className="absolute left-2 top-1.5 h-4 w-4 text-white/70" />
         </div>
         
-        <button className="p-1.5 rounded-full hover:bg-white/10 transition-colors">
-          <Bell className="h-5 w-5" />
-        </button>
+        <NotificationsPanel />
         
         <button 
           className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
@@ -53,6 +55,8 @@ const SearchBar: React.FC = () => {
         >
           <Settings className="h-5 w-5" />
         </button>
+        
+        <UserProfile />
       </div>
     </div>
   );
