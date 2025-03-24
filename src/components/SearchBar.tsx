@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, Bell, Settings } from 'lucide-react';
+import { Search, Bell, Settings, Sun } from 'lucide-react';
 
 const SearchBar: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
