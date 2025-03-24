@@ -11,10 +11,14 @@ const SearchBar: React.FC = () => {
   // Set the title based on current route
   const getTitle = () => {
     switch (location.pathname) {
+      case '/dashboard':
+        return 'Dashboard';
       case '/power-predictions':
         return 'Power Predictions';
       case '/settings':
         return 'Settings';
+      case '/':
+        return 'Solar Energy Forecast';
       default:
         return 'Solar Energy Forecast';
     }

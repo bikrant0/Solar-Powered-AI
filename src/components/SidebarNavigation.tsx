@@ -1,8 +1,8 @@
 
-import React from 'react';
-import { Home, Cloud, Sun, Wifi, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { Home, Cloud, Sun, Wifi, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 type SidebarItemProps = {
   icon: React.ElementType;
@@ -31,19 +31,29 @@ type SidebarNavigationProps = {
 
 const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeTab, setActiveTab }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   
+  // Update items with the correct routes
   const items = [
-    { id: 'home', icon: Home, path: '/' },
+    { id: 'home', icon: Home, path: '/dashboard' },
     { id: 'weather', icon: Cloud, path: '/weather' },
-    { id: 'solar', icon: Sun, path: '/solar' },
+    { id: 'solar', icon: Sun, path: '/' },
     { id: 'connectivity', icon: Wifi, path: '/power-predictions' },
-    { id: 'profile', icon: User, path: '/profile' },
+    { id: 'settings', icon: Settings, path: '/settings' },
   ];
 
   const handleTabClick = (tabId: string, path: string) => {
     setActiveTab(tabId);
     navigate(path);
   };
+
+  // Synchronize activeTab with current route on component mount
+  React.useEffect(() => {
+    const currentItem = items.find(item => item.path === location.pathname);
+    if (currentItem && currentItem.id !== activeTab) {
+      setActiveTab(currentItem.id);
+    }
+  }, [location.pathname, activeTab, setActiveTab]);
 
   return (
     <div className="flex flex-col items-center py-4 bg-solar-dark-blue h-full w-16 animate-fade-in">
